@@ -1,11 +1,20 @@
 # 写一个"简易密码强度检查器"：检查长度/数字/特殊字符
-pwd = input("请输入密码")
-if len(pwd) < 6:
-    strength = "弱（长度不足）"
-elif pwd.isdigit() or pwd.isalpha():
-    strength = "中（只有数字或字母）"
+SPECIALS = "!@#$%^&*"
+password = input("请输入密码")
+has_digit = False
+has_special = False
+for p in password :
+    if(p.isdigit()):
+        has_digit = True
+    if(p in SPECIALS):
+        has_special = True
+if(len(password)<6):
+    print("弱")
+elif(has_digit & has_special):
+    print("强")
+elif(has_digit | has_special):
+    print("中")
 else:
-    strength = "强（包含数字和特殊字符）"
-    print(f"密码强度：{strength}")
+    print("弱")
 
     
