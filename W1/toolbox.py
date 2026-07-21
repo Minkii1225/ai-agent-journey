@@ -42,7 +42,7 @@ while True:
                 print("太小了")
             input("按 Enter 键返回菜单...")  # 加这一行，防止屏幕闪退
 
-    if choice == "3"        
+    if choice == "3":        
      # 写一个"简易密码强度检查器"：检查长度/数字/特殊字符
         SPECIALS = "!@#$%^&*"
         password = input("请输入密码")
