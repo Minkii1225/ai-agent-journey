@@ -29,7 +29,7 @@ while True:
                     "数学": math_score,
                     "英语": english_score
                 }
-            print(f"学生 {student_name} 的成绩已添加。")
+                print(f"学生 {student_name} 的成绩已添加。")
         case "2":#删除学生
             student_id = input("请输入要删除的学生学号：")
             if student_id not in score_dict:
