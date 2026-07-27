@@ -37,7 +37,6 @@ while True:
             else:
                 del score_dict[student_id]
                 print(f"学号 {student_id} 的学生已删除。")        
-            print(f"学生 {student_name} 的成绩已添加。")
         case "3":#修改学生成绩
             student_id = input("请输入要修改成绩的学生学号：")
             if student_id not in score_dict:
