@@ -28,7 +28,7 @@ while True:
             print('不及格')
         input("按 Enter 键返回菜单...")  # 加这一行，防止屏幕闪退
     
-    if choice =="2":
+    elif choice =="2":
         # 写一个"猜数字游戏"：随机生成 1-100，循环猜，提示大小
         num = random.randint(1,100)
         while True:
@@ -41,7 +41,7 @@ while True:
             if text<num :
                 print("太小了")
 
-    if choice == "3":        
+    elif choice == "3":        
      # 写一个"简易密码强度检查器"：检查长度/数字/特殊字符
         SPECIALS = "!@#$%^&*"
         password = input("请输入密码")
