@@ -52,14 +52,14 @@ while True:
                 has_digit = True
             if(p in SPECIALS):
                 has_special = True
-            if(len(password)<6):
-                print("弱")
-            elif(has_digit and has_special):
-                print("强")
-            elif(has_digit or has_special):
-                print("中")
-            else:
-                print("弱")
+        if(len(password)<6):
+            print("弱")
+        elif(has_digit and has_special):
+            print("强")
+        elif(has_digit or has_special):
+            print("中")
+        else:
+            print("弱")
 
     elif choice == '0':
         print("\n👋 感谢使用工具箱，再见！")
