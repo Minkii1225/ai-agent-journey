@@ -31,16 +31,15 @@ while True:
     if choice =="2":
         # 写一个"猜数字游戏"：随机生成 1-100，循环猜，提示大小
         num = random.randint(1,100)
-        for a in range(1,101):
-            a = int(input("请输入一个1-100的整数"))
-            if a>num :
+        while True:
+            text = int(input("请输入一个1-100的整数"))
+            if text >num :
                 print("太大了")
-            elif a==num:
-                print("猜对了")
+            elif text ==num:
+                print("猜对了")               
                 break
-            if a<num :
+            if text<num :
                 print("太小了")
-            input("按 Enter 键返回菜单...")  # 加这一行，防止屏幕闪退
 
     if choice == "3":        
      # 写一个"简易密码强度检查器"：检查长度/数字/特殊字符
@@ -55,9 +54,9 @@ while True:
                 has_special = True
             if(len(password)<6):
                 print("弱")
-            elif(has_digit & has_special):
+            elif(has_digit and has_special):
                 print("强")
-            elif(has_digit | has_special):
+            elif(has_digit or has_special):
                 print("中")
             else:
                 print("弱")
