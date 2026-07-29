@@ -96,14 +96,14 @@ while True:
     choice = input("请输入操作序号：")
     match choice:
         case "1":  # 添加联系人
-            name = input("请输入联系人姓名：")
-            phone = input("请输入联系人电话：")
+            name: str = input("请输入联系人姓名：")
+            phone: str = input("请输入联系人电话：")
             add_contact(name,phone)
         case "2":  # 删除联系人
-            name = input("请输入联系人姓名：")
+            name: str = input("请输入联系人姓名：")
             delete_contact(name)
         case "3":  # 查询联系人
-            name = input("请输入联系人姓名：")
+            name: str = input("请输入联系人姓名：")
             query_contact(name)
         case "4":  # 查询所有联系人
             query_all_contacts()
