@@ -42,24 +42,31 @@
 #             print("退出通讯录程序。")
 #             break
 
-def add_contact(name,phone):
+def add_contact(name:str,phone:str):
     """
     添加联系人
     Args:
-        name (_type_): _description_ 姓名
-        phone (_type_): _description_ 电话号码
+        name:姓名
+        phone:电话号码
+
+    Returns:None
+
     """
     if name in contacts:
         print(f"联系人 {name} 已存在，无法添加。")
     else:
         contacts[name] = phone
         print(f"联系人 {name} 已添加。")
-def delete_contact(name):
+def delete_contact(name:str):
     """
     删除联系人
     Args:
-        name (_type_): _description_ 姓名
+        name:姓名·
+
+    Returns:None
+
     """
+
     if name not in contacts:
         print(f"联系人 {name} 不存在，无法删除。")
     else:
@@ -69,7 +76,10 @@ def query_contact(name):
     """
     查询联系人
     Args:
-        name (_type_): _description_ 姓名
+        name:姓名
+
+    Returns:None
+
     """
     if name in contacts:
         print(f"联系人 {name} 的电话是 {contacts[name]}。")
