@@ -6,16 +6,16 @@
 # 查询学生信息（输入学号或姓名，打印成绩和平均分）
 
 class Student:
-    def __init__(self, name, id, Chinese, Math, English):
+    def __init__(self, name, student_id, Chinese, Math, English):
         self.name = name
-        self.id = id
+        self.id = student_id
         self.Chinese = Chinese
         self.Math = Math
         self.English = English
     def __str__(self):
         return f"姓名: {self.name}|学号: {self.id}|语文成绩: {self.Chinese}|数学成绩: {self.Math}|英语成绩: {self.English}"
-    def add_score(self, name, id, Chinese=None, Math=None, English=None):
-        if name != self.name or id != self.id:
+    def add_score(self, name, student_id, Chinese=None, Math=None, English=None):
+        if name != self.name or student_id != self.id:
             print("姓名或学号不匹配，无法添加成绩")
             return
         if Chinese is not None:
@@ -46,44 +46,70 @@ class StudentSystem:
     def __init__ (self):
         self.students_list = []
     # 添加学生
-    def add_student(self, name, id, Chinese, Math, English):
+    def add_student(self):
+        name = input("请输入学生姓名：")
+        student_id = input("请输入学生学号：")
+        Chinese = int(input("请输入语文成绩："))
+        Math = int(input("请输入数学成绩："))
+        English = int(input("请输入英语成绩："))    
         for student in self.students_list:
-            if name == student.name and id == student.id:
+            if name == student.name and student_id == student.id:
                 print("该学生已存在，无法添加")
                 return
         if Chinese < 0 or Chinese > 100 or Math < 0 or Math > 100 or English < 0 or English > 100:
             print("成绩输入有误，请重新输入范围是1-100的整数")
         else:
-            student = Student(name, id, Chinese, Math, English)
+            student = Student(name, student_id, Chinese, Math, English)
             self.students_list.append(student)
             print("学生添加成功")
     # 删除学生
-    def delete_student(self, name, id):
+    def delete_student(self):
+        name = input("请输入学生姓名：")
+        student_id = input("请输入学生学号：")
         for student in self.students_list:
-            if student.name == name and student.id == id:
+            if student.name == name and student.id == student_id:
                 self.students_list.remove(student)
                 print("学生删除成功")
                 return
         print("未找到该学生，无法删除")
     # 查询学生信息
-    def query_student(self, name=None, id=None):
+    def query_student(self):
+        name = input("请输入学生姓名（可选）：")
+        student_id = input("请输入学生学号（可选）：")
         for student in self.students_list:
             if name is not None and student.name == name:
                 print(student)
                 print(f"平均分: {student.average_score()}")
                 student.is_passed()
                 return
-            elif id is not None and student.id == id:
+            elif student_id is not None and student.id == student_id:
                 print(student)
                 print(f"平均分: {student.average_score()}")
                 student.is_passed()
                 return
         print("未找到该学生信息")
     # 修改学生信息
-    def modify_student(self, name, id, Chinese=None, Math=None, English=None):
+    def modify_student(self):
+        name = input("请输入学生姓名：")
+        student_id = input("请输入学生学号：")
+        Chinese = input("请输入语文成绩（可选）：")
+        Math = input("请输入数学成绩（可选）：")
+        English = input("请输入英语成绩（可选）：")
+        if Chinese:
+            Chinese = int(Chinese)
+        else:
+            Chinese = None
+        if Math:
+            Math = int(Math)
+        else:
+            Math = None
+        if English:
+            English = int(English)
+        else:
+            English = None
         for student in self.students_list:
-            if student.name == name and student.id == id:
-                student.add_score(name, id, Chinese, Math, English)
+            if student.name == name and student.id == student_id:
+                student.add_score(name, student_id, Chinese, Math, English)
                 print("学生信息修改成功")
                 return
         print("未找到该学生信息，无法修改")
@@ -104,42 +130,28 @@ class StudentSystem:
         5. 查询所有学生信息
         6. 退出系统
         """
-        system = StudentSystem()
-        try:
-            while True:
-                print(menu)
-                choice = input("请输入操作编号：")
-                if choice == "1":
-                    name = input("请输入学生姓名：")
-                    id = input("请输入学生学号：")
-                    Chinese = int(input("请输入语文成绩："))
-                    Math = int(input("请输入数学成绩："))
-                    English = int(input("请输入英语成绩："))
-                    system.add_student(name, id, Chinese, Math, English)
-                elif choice == "2":
-                    name = input("请输入学生姓名：")
-                    id = input("请输入学生学号：")
-                    system.delete_student(name, id)
-                elif choice == "3":
-                    name = input("请输入学生姓名（可选）：")
-                    id = input("请输入学生学号（可选）：")
-                    system.query_student(name, id)
-                elif choice == "4":
-                    name = input("请输入学生姓名：")
-                    id = input("请输入学生学号：")
-                    Chinese = int(input("请输入语文成绩（可选）："))
-                    Math = int(input("请输入数学成绩（可选）："))
-                    English = int(input("请输入英语成绩（可选）："))
-                    system.modify_student(name, id, Chinese, Math, English)
-                elif choice == "5":
-                    system.query_all_students()
-                elif choice == "6":
-                    print("退出系统，感谢使用！")
-                    break
-                else:
-                    print("输入有误，请重新选择操作编号")
-        except ValueError:
-            print("输入有误，请输入正确的数字")
+        while True:
+            print(menu)
+            choice = input("请输入操作编号：")
+            try:
+                match choice:
+                    case "1":
+                        self.add_student()
+                    case "2":
+                        self.delete_student()
+                    case "3":
+                        self.query_student()
+                    case "4":
+                        self.modify_student()
+                    case "5":
+                        self.query_all_students()
+                    case "6":
+                        print("退出系统")
+                        break
+                    case _:
+                        print("输入有误，请重新输入")
+            except Exception as e:
+                print(f"发生错误：{e}")
 
 if __name__ == "__main__":
     studentsystem = StudentSystem()
