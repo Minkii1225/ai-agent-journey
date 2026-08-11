@@ -93,47 +93,54 @@ class StudentSystem:
             print(student)
             print(f"平均分: {student.average_score()}")
             student.is_passed()
+    def run(self):
+        print(f"欢迎使用{StudentSystem.systemname}，版本号：{StudentSystem.systemversion}，作者：{StudentSystem.systemauthor}")
+        menu = """
+        请选择操作：
+        1. 添加学生
+        2. 删除学生
+        3. 查询学生信息
+        4. 修改学生信息
+        5. 查询所有学生信息
+        6. 退出系统
+        """
+        system = StudentSystem()
+        try:
+            while True:
+                print(menu)
+                choice = input("请输入操作编号：")
+                if choice == "1":
+                    name = input("请输入学生姓名：")
+                    id = input("请输入学生学号：")
+                    Chinese = int(input("请输入语文成绩："))
+                    Math = int(input("请输入数学成绩："))
+                    English = int(input("请输入英语成绩："))
+                    system.add_student(name, id, Chinese, Math, English)
+                elif choice == "2":
+                    name = input("请输入学生姓名：")
+                    id = input("请输入学生学号：")
+                    system.delete_student(name, id)
+                elif choice == "3":
+                    name = input("请输入学生姓名（可选）：")
+                    id = input("请输入学生学号（可选）：")
+                    system.query_student(name, id)
+                elif choice == "4":
+                    name = input("请输入学生姓名：")
+                    id = input("请输入学生学号：")
+                    Chinese = int(input("请输入语文成绩（可选）："))
+                    Math = int(input("请输入数学成绩（可选）："))
+                    English = int(input("请输入英语成绩（可选）："))
+                    system.modify_student(name, id, Chinese, Math, English)
+                elif choice == "5":
+                    system.query_all_students()
+                elif choice == "6":
+                    print("退出系统，感谢使用！")
+                    break
+                else:
+                    print("输入有误，请重新选择操作编号")
+        except ValueError:
+            print("输入有误，请输入正确的数字")
 
-print(f"欢迎使用{StudentSystem.systemname}，版本号：{StudentSystem.systemversion}，作者：{StudentSystem.systemauthor}")
-menu = """
-请选择操作：
-1. 添加学生
-2. 删除学生
-3. 查询学生信息
-4. 修改学生信息
-5. 查询所有学生信息
-6. 退出系统
-"""
-system = StudentSystem()
-while True:
-    print(menu)
-    choice = input("请输入操作编号：")
-    if choice == "1":
-        name = input("请输入学生姓名：")
-        id = input("请输入学生学号：")
-        Chinese = int(input("请输入语文成绩："))
-        Math = int(input("请输入数学成绩："))
-        English = int(input("请输入英语成绩："))
-        system.add_student(name, id, Chinese, Math, English)
-    elif choice == "2":
-        name = input("请输入学生姓名：")
-        id = input("请输入学生学号：")
-        system.delete_student(name, id)
-    elif choice == "3":
-        name = input("请输入学生姓名（可选）：")
-        id = input("请输入学生学号（可选）：")
-        system.query_student(name, id)
-    elif choice == "4":
-        name = input("请输入学生姓名：")
-        id = input("请输入学生学号：")
-        Chinese = int(input("请输入语文成绩（可选）："))
-        Math = int(input("请输入数学成绩（可选）："))
-        English = int(input("请输入英语成绩（可选）："))
-        system.modify_student(name, id, Chinese, Math, English)
-    elif choice == "5":
-        system.query_all_students()
-    elif choice == "6":
-        print("退出系统，感谢使用！")
-        break
-    else:
-        print("输入有误，请重新选择操作编号")
+if __name__ == "__main__":
+    studentsystem = StudentSystem()
+    studentsystem.run()
