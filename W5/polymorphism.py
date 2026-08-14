@@ -2,13 +2,13 @@
 class Animal:
     def speak(self):
         print("动物发出声音")
-class Dog:
+class Dog(Animal):
     def speak(self):
         print("汪汪汪")
-class Cat:
+class Cat(Animal):
     def speak(self):
         print("喵喵喵")
-class Cow:
+class Cow(Animal):
     def speak(self):
         print("哞哞哞")
 # 多继承写法：
@@ -21,7 +21,7 @@ class Cow:
 # run = Run()
 # run.make_sound()
 # 多态：
-def make_sound(animal):
+def make_sound(animal: Animal):
     animal.speak()
 make_sound(Animal())  # 输出: 动物发出声音
 make_sound(Dog())  # 输出: 汪汪汪
