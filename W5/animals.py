@@ -8,9 +8,13 @@ class Dog(Animal):
 class Cat(Animal):
     def speak(self):
         print("喵喵喵")
+class Bird(Animal):
+    pass  # Bird 类暂时不实现 speak() 方法
 animal = Animal()
 dog = Dog()
 cat = Cat()
 animal.speak()  # 输出: 动物发出叫声
 dog.speak()     # 输出: 汪汪汪
 cat.speak()     # 输出: 喵喵喵
+bird = Bird()
+bird.speak()    # 输出: 动物发出叫声（继承自 Animal 类）
