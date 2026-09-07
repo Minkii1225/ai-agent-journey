@@ -5,10 +5,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-while True:
-    tone = input("请选择语气（1. 正式 2. 口语 3. 幽默）: ")
-    
-    client = OpenAI(
+client = OpenAI(
     api_key=os.environ.get('DEEPSEEK_API_KEY'),
     base_url="https://api.deepseek.com"
 )
