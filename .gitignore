@@ -13,3 +13,10 @@ Thumbs.db
 # 环境变量（API Key 等，绝不提交）
 .env
 *.env
+
+# 虚拟环境（不提交）
+.venv/
+venv/
+
+# 会话数据（隐私，绝不提交）
+sessions/
