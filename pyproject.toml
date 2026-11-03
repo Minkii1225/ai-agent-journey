@@ -1,0 +1,24 @@
+[project]
+name = "ai-agent-journey"
+version = "0.1.0"
+description = "AI 全栈学习路径：从 Python 基础到 LLM 应用与 Agent 开发"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=3.5.0",
+    "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
+    "streamlit>=1.63.0",
+    "langchain>=1.4.8",
+    "langchain-deepseek>=1.1.1",
+]
+
+# 依赖解析与下载统一走清华镜像（uv 不读取 pip.ini，需在项目内单独配置）
+[[tool.uv.index]]
+name = "tuna"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+]
