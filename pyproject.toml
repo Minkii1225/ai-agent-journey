@@ -10,6 +10,7 @@ dependencies = [
     "streamlit>=1.63.0",
     "langchain>=1.4.8",
     "langchain-deepseek>=1.1.1",
+    "rich>=15.0.0",
 ]
 
 # 依赖解析与下载统一走清华镜像（uv 不读取 pip.ini，需在项目内单独配置）
